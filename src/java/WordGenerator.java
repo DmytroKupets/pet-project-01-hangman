@@ -6,8 +6,15 @@ import java.util.List;
 import java.util.Random;
 
 public class WordGenerator {
-    public String getWord() throws IOException {
-        List<String> wordList = Files.readAllLines(Paths.get("src/resources/dictionary.txt"));
+    public static String getWord() {
+        List<String> wordList = null;
+
+        try {
+            wordList = Files.readAllLines(Paths.get("src/resources/dictionary.txt"));
+        } catch (IOException e) {
+            System.out.println("Помилка читання файлу: " + e.getMessage());
+        }
+
         return wordList.get(new Random().nextInt(wordList.size()));
     }
 }
