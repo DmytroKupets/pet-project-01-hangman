@@ -15,6 +15,9 @@ public class WordGenerator {
             System.out.println("Помилка читання файлу: " + e.getMessage());
         }
 
-        return wordList.get(new Random().nextInt(wordList.size()));
+        if (wordList != null) {
+            return wordList.get(new Random().nextInt(wordList.size()));
+        }
+        return null;
     }
 }
